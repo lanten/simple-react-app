@@ -1,5 +1,4 @@
 const path = require('path')
-const appConfig = require('./app.config');
 const webpack = require('webpack')
 const htmlPlugin = require('html-webpack-plugin')
 
@@ -28,7 +27,6 @@ const config = {
         use: [
           'style-loader',
           'css-loader',
-          'postcss-loader'
         ]
       },
       {
@@ -46,7 +44,7 @@ const config = {
     ]
   },
   plugins: [
-    new htmlPlugin(), // 自动创建 html
+    new htmlPlugin(),
     new webpack.DefinePlugin({
       NODE_ENV: `${NODE_ENV}`
     })
@@ -84,7 +82,7 @@ if (NODE_ENV == 'development') {
 } else if (NODE_ENV == 'production') {
   // 生产环境配置
   config.plugins.push(
-    new webpack.optimize.UglifyJsPlugin() // 压缩 js
+    // new webpack.optimize.UglifyJsPlugin() // 压缩 js
   )
 }
 

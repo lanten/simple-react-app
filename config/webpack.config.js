@@ -36,7 +36,7 @@ const config = {
             loader: 'url-loader',
             options: {
               limit: 1024,
-              name: '[name]-[hash].[ext]'
+              name: '[name].[ext]'
             }
           }
         ]
@@ -44,7 +44,10 @@ const config = {
     ]
   },
   plugins: [
-    new htmlPlugin(),
+    new htmlPlugin({
+      title: 'simple-react-app',
+      filename: 'index.html'
+    }),
     new webpack.DefinePlugin({
       NODE_ENV: `${NODE_ENV}`
     })
@@ -82,10 +85,10 @@ if (NODE_ENV == 'development') {
 } else if (NODE_ENV == 'production') {
   // 生产环境配置
   config.plugins.push(
-    // new webpack.optimize.UglifyJsPlugin() // 压缩 js
+    new webpack.optimize.UglifyJsPlugin() // 压缩 js
   )
 }
 
-// console.log(config)
+console.log(config)
 
 module.exports = config

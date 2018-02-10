@@ -18,7 +18,7 @@ const config = {
   module: {
     rules: [
       {
-        test: /\.(js|jsx|mjs)$/,
+        test: /\.(js|jsx)$/,
         include: path.join(__dirname, '../app'),
         loader: 'babel-loader'
       },
@@ -88,7 +88,5 @@ if (NODE_ENV == 'development') {
     new webpack.optimize.UglifyJsPlugin() // 压缩 js
   )
 }
-
-console.log(config)
 
 module.exports = config
